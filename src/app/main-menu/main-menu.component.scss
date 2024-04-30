@@ -1,0 +1,53 @@
+:host
+{
+    height: 100vh;
+}
+
+.menuContainer
+{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+    
+}
+
+.blurPanel
+{
+    display: flex;
+    flex-direction: column;
+    gap : 15px;
+    
+    border-radius: 15px;
+    
+    margin-bottom: 10em;
+    color: white;
+}
+
+.buttonPadding
+{
+    padding: 2rem 4rem;
+    box-shadow: 0px 0px 9px 3px #000000;
+    text-align: center;
+    
+}
+
+.blurButton
+{
+    transition-duration: .5s;
+    transition-delay: 100ms;
+    backdrop-filter: blur(20px);
+    border-radius: .5rem;
+    
+}
+
+.blurButton:hover, .blurButton:focus
+{
+    transition-duration: .75s;
+    transition-delay: 100ms;
+    backdrop-filter: blur(0px);
+    border-radius: 1rem;
+    
+}
