@@ -9,22 +9,27 @@ import { EpicImageGetterService } from '../epic-image-getter.service';
 export class EpicPage implements OnInit {
 
   public epicImageData : any;
+  public epicImageUrlString : any;
+  public epicImageDate : any;
 
   constructor(private epicImageGetter : EpicImageGetterService) { }
 
-  get epicImage() { return this.epicImageData ? this.epicImageData : '';}
+  get epicImage() { return this.epicImageUrlString? this.epicImageUrlString : '';}
+  get epicDate() { return this.epicImageDate? this.epicImageDate : '';}
 
   ngOnInit() 
   {
     this.epicImageGetter.getMetaData().subscribe((data) => {
       this.epicImageData = data;
-      console.log("Meta: ");
-      console.log(this.epicImageData);
-      this.epicImageGetter.getEpicImage(this.epicImageData[0].image).subscribe((data) => {
-        this.epicImageData = data;
-        console.log("Epic: ");
-        console.log(this.epicImageData);
-      });
+      var imageDate = data[0].date;
+      imageDate = imageDate.split(' ')[0];
+      this.epicImageDate = imageDate;
+      //replace the dashes with slashes
+      imageDate = imageDate.replace(/-/g, '/');
+      console.log(imageDate);
+
+      
+      this.epicImageUrlString = this.epicImageGetter.getEpicImage(this.epicImageData[0].image, imageDate);
     });
 
     

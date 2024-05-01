@@ -22,22 +22,16 @@ export class EpicImageGetterService
 
   getMetaData() : Observable<any>
   {
-    
-    var year = '2019';
-    var month = '05';
-    var day = '30';
-    
-    
-    return this.http.get('https://api.nasa.gov/EPIC/api/natural/date/' + year + '-' + month + '-' + day + '?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA');
+    return this.http.get('https://api.nasa.gov/EPIC/api/natural/images/?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA');
 
   }
-  getEpicImage(imageName : string) : Observable<any>
+  getEpicImage(imageName : string, date : string) : String
   {
-    var year = '2019';
+    var year = '2022';
     var month = '05';
     var day = '30';
 
-    return this.http.get('https://api.nasa.gov/EPIC/archive/natural/png/' + year + '/' + month + '/' + day + '/' + imageName + '.png' + '?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA');
+    return 'https://api.nasa.gov/EPIC/archive/natural/' + date + '/png/' + imageName + '.png' + '?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA';
   }
 
   

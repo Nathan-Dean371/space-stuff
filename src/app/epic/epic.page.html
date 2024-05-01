@@ -1,11 +1,10 @@
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">epic</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="epicInfo">
+    <h2>The most recent EPIC natural colour image!</h2>
+    <p>Date: {{epicDate}}</p>
+  </div>
 
-  <div class="epicImage" ></div>
+  <div class="epicImage" [ngStyle]="{ 'background-image': 'url(' + epicImage + ')'}"></div> 
   
 </ion-content>
