@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { EpicPageModule } from './epic/epic.module';
+import { EpicPageRoutingModule } from './epic/epic-routing.module';
+import { EpicPage } from './epic/epic.page';
 
 const routes: Routes = [
   {
@@ -11,10 +14,9 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'epic',
-    loadChildren: () => import('./epic/epic.module').then( m => m.EpicPageModule)
-  },
+  { path: 'epic',
+    component : EpicPage
+  }
 ];
 
 @NgModule({

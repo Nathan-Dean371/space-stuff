@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-home',
