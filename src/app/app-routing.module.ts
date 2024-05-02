@@ -16,6 +16,10 @@ const routes: Routes = [
   },
   { path: 'epic',
     component : EpicPage
+  },
+  {
+    path: 'planet-distance-page',
+    loadChildren: () => import('./planet-distance-page/planet-distance-page.module').then( m => m.PlanetDistancePagePageModule)
   }
 ];
 
