@@ -6,9 +6,14 @@ import { EphemerisGetterService } from '../ephemeris-getter.service';
   templateUrl: './planet-distance-page.page.html',
   styleUrls: ['./planet-distance-page.page.scss'],
 })
-export class PlanetDistancePagePage implements OnInit {
+export class PlanetDistancePagePage implements OnInit 
+{
+
+  public distanceHolder : any;
 
   constructor(private ephemerisGetter : EphemerisGetterService) { }
+
+  get distance() { return this.distanceHolder ? this.distanceHolder : '';}
 
   ngOnInit() 
   {
@@ -77,7 +82,7 @@ export class PlanetDistancePagePage implements OnInit {
         // Calculate the distance from 0 , 0 , 0
         const distance = Math.sqrt(xCoordinate * xCoordinate + yCoordinate * yCoordinate + zCoordinate * zCoordinate);
         console.log("Distance from the origin:", distance);
-        
+        this.distanceHolder = "Distance from Earth to Mars: " + distance;
 
 
       },
