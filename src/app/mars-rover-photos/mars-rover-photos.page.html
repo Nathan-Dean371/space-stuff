@@ -2,6 +2,11 @@
   <ion-toolbar>
     <ion-title>Mars Rover Photos</ion-title>
   </ion-toolbar>
+
+  <ion-button class="backButton" fill="clear" expand="block" href="/home">
+    Back
+  </ion-button>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -9,5 +14,11 @@
     <ion-toolbar>
       <ion-title size="large">Mars Rover Photos</ion-title>
     </ion-toolbar>
+    
   </ion-header>
+
+
+  <div class="roverImage" [ngStyle]="{ 'background-image': 'url('+ roverImage.photos[this.imageIndex].img_src +')' }"></div>
+
+
 </ion-content>

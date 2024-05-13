@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoverImageGetterService } from '../rover-image-getter.service';
 
 @Component({
   selector: 'app-mars-rover-photos',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarsRoverPhotosPage implements OnInit {
 
-  constructor() { }
+  public roverImages: any;
+  public imageIndex = 0;
 
-  ngOnInit() {
+  constructor(private roverImageGetter : RoverImageGetterService) { }
+
+  get roverImage() { return this.roverImages ? this.roverImages : '';}
+
+  ngOnInit() 
+  {
+    this.roverImageGetter.getRoverImages().subscribe((data) => {
+      this.roverImages = data;
+      console.log(this.roverImages);
+    });
+
+    
   }
 
 }

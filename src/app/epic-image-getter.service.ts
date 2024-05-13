@@ -27,10 +27,6 @@ export class EpicImageGetterService
   }
   getEpicImage(imageName : string, date : string) : String
   {
-    var year = '2022';
-    var month = '05';
-    var day = '30';
-
     return 'https://api.nasa.gov/EPIC/archive/natural/' + date + '/png/' + imageName + '.png' + '?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA';
   }
 
