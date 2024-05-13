@@ -3,8 +3,18 @@
   <div class="epicInfo">
     <h2>The most recent EPIC natural colour image!</h2>
     <p>Date: {{epicDate}}</p>
+
+    <ion-button class="backButton" fill="clear" expand="block" href="/home">
+      Back
+    </ion-button>
+    
   </div>
 
+  
+  
+
   <div class="epicImage" [ngStyle]="{ 'background-image': 'url(' + epicImage + ')'}"></div> 
+  
+  
   
 </ion-content>

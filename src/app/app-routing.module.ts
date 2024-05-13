@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'planet-distance-page',
     loadChildren: () => import('./planet-distance-page/planet-distance-page.module').then( m => m.PlanetDistancePagePageModule)
+  },
+  {
+    path: 'mars-rover-photos',
+    loadChildren: () => import('./mars-rover-photos/mars-rover-photos.module').then( m => m.MarsRoverPhotosPageModule)
   }
 ];
 
