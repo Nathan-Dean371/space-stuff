@@ -19,6 +19,13 @@ export class PODBackgroundComponent  implements OnInit {
   {
     this.podImageGetter.getImage().subscribe((data) => {
       console.log(data);
+
+      if(data.media_type == 'video')
+      {
+        data.url = data.thumbnail_url;
+      }
+      
+
       this.podImageData = data;
     });
 

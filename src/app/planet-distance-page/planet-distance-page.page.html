@@ -1,20 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>planetDistancePage</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">planetDistancePage</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <div class="pageContainer">
+    <ion-text class="planetText">
+      <h1>Planet Distance Calculator</h1>
+    </ion-text>
+  
+      <ion-select class="planetSelector" id="originSelector" label="Origin Body" value="399" onchange="updateOrigin">
+        <ion-select-option value="199">Mercury</ion-select-option>
+        <ion-select-option value="299">Venus</ion-select-option>
+        <ion-select-option value="399">Earth</ion-select-option>
+        <ion-select-option value="499">Mars</ion-select-option>
+        <ion-select-option value="599">Jupiter</ion-select-option>
+        <ion-select-option value="699">Saturn</ion-select-option>
+        <ion-select-option value="799">Uranus</ion-select-option>
+        <ion-select-option value="899">Neptune</ion-select-option>
+      </ion-select>
+  
+      <ion-select class="planetSelector" id="targetSelector" label="Target Body" value="499" onchange="updateTaget">
+        <ion-select-option value="199">Mercury</ion-select-option>
+        <ion-select-option value="299">Venus</ion-select-option>
+        <ion-select-option value="399">Earth</ion-select-option>
+        <ion-select-option value="499">Mars</ion-select-option>
+        <ion-select-option value="599">Jupiter</ion-select-option>
+        <ion-select-option value="699">Saturn</ion-select-option>
+        <ion-select-option value="799">Uranus</ion-select-option>
+        <ion-select-option value="899">Neptune</ion-select-option>
+      </ion-select>
 
 
-  <ion-text class="planetText">
-    <h1>Planet Distance Page</h1>
+      <ion-button class="calculateButton" expand="block" (click)="calculateDistance()">
+        Calculate Distance
+      </ion-button> 
 
-    <p [innerHTML]="distance"></p>
-  </ion-text>
+
+      <ion-text class="distanceText">
+        <p> Distance from {{sourcePlanet}} to {{targetPlanet}}.</p>
+
+
+        <h2>Distance: {{distance}} km</h2>
+      </ion-text>
+
+      <ion-button class="backButton" expand="block" href="/home">
+        Back
+      </ion-button>
+      
+      </div>
 </ion-content>

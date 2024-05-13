@@ -9,16 +9,16 @@ export class EphemerisGetterService {
 
   constructor(public http : HttpClient) { }
 
-  getEphemeris() : Observable<any>
+  getEphemeris(origin : string, target : string) : Observable<any>
   {
     const queryParameters = new URLSearchParams(
       { 
         format: 'json',
-        COMMAND:'499',
+        COMMAND: target,
         OBJ_DATA:'NO',
         MAKE_EPHEM:'YES',
         EPHEM_TYPE:'VECTOR',
-        CENTER : '500@10',
+        CENTER : origin,
         START_TIME:'2024-05-01',
         STOP_TIME:'2024-05-02',
         STEP_SIZE:'1d',

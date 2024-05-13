@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EphemerisGetterService } from '../ephemeris-getter.service';
+import { IonSelect } from '@ionic/angular';
 
 @Component({
   selector: 'app-planet-distance-page',
@@ -10,14 +11,58 @@ export class PlanetDistancePagePage implements OnInit
 {
 
   public distanceHolder : any;
+  public sourcePlanetName : any;
+  public targetPlanetName : any;
 
   constructor(private ephemerisGetter : EphemerisGetterService) { }
 
   get distance() { return this.distanceHolder ? this.distanceHolder : '';}
+  get sourcePlanet () { return this.ConvertFromPlanetIDtoString(this.sourcePlanetName) ? this.sourcePlanetName : '';}
+  get targetPlanet () { return this.ConvertFromPlanetIDtoString(this.targetPlanetName) ? this.targetPlanetName : '';}
 
   ngOnInit() 
   {
-    this.ephemerisGetter.getEphemeris().subscribe(
+    
+  }
+
+  ConvertFromPlanetIDtoString(planetID : number) : string
+  {
+    switch(planetID)
+    {
+      case 199:
+        return "Mercury";
+      case 299:
+        return "Venus";
+      case 399:
+        return "Earth";
+      case 499:
+        return "Mars";
+      case 599:
+        return "Jupiter";
+      case 699:
+        return "Saturn";
+      case 799:
+        return "Uranus";
+      case 899:
+        return "Neptune";
+      default:
+        return "Invalid Planet ID";  
+    }
+  }
+
+  getDistance()
+  {
+    //Get input from the selectors
+    var planet1 = (<HTMLInputElement>document.getElementById('originSelector')).value;
+    var planet2 = (<HTMLInputElement>document.getElementById('targetSelector')).value;
+
+    //Console log the planets
+    console.log('Planet 1: ' + planet1);
+    console.log('Planet 2: ' + planet2);
+
+
+    //Get the distance between the two planets
+    this.ephemerisGetter.getEphemeris(planet1, planet2).subscribe(
       (data) => {
         console.log(data);
 
@@ -81,9 +126,11 @@ export class PlanetDistancePagePage implements OnInit
 
         // Calculate the distance from 0 , 0 , 0
         const distance = Math.sqrt(xCoordinate * xCoordinate + yCoordinate * yCoordinate + zCoordinate * zCoordinate);
-        console.log("Distance from the origin:", distance);
-        this.distanceHolder = "Distance from Earth to Mars: " + distance;
+        //limit distance to 2 decimal places
+        let roundedDistance = distance.toFixed(2);
 
+        console.log("Distance from the origin:", distance + "km");
+        this.distanceHolder = roundedDistance;
 
       },
       (error) => {
@@ -92,6 +139,20 @@ export class PlanetDistancePagePage implements OnInit
         console.log(error);
       }
     );
+
+
   }
+
+  calculateDistance()
+  {
+    this.sourcePlanetName = this.ConvertFromPlanetIDtoString( parseInt((<HTMLInputElement>document.getElementById('originSelector')).value));
+    this.targetPlanetName = this.ConvertFromPlanetIDtoString( parseInt((<HTMLInputElement>document.getElementById('targetSelector')).value));
+
+
+    console.log('Calculating distance...');
+    this.getDistance();
+  }
+
+  
 
 }

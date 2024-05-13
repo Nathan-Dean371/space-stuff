@@ -12,6 +12,6 @@ export class PodImageGetterService {
 
   getImage():Observable<any>
   {
-    return this.http.get('https://api.nasa.gov/planetary/apod?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA');
+    return this.http.get('https://api.nasa.gov/planetary/apod?api_key=eLAInztqQez7c9E6RLMScXQ4fzY55cWdKZVXjRDA&thumbs=true');
   }
 }
